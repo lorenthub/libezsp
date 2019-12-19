@@ -128,14 +128,14 @@ void CEzspDongle::handleInputData(const unsigned char* dataIn, const size_t data
             // response to a sending command
             if( !sendingMsgQueue.empty() )
             {
-				sMsg l_msgQ = sendingMsgQueue.front();
-				if( l_msgQ.i_cmd == l_cmd ) // Bug
-				{
-					// remove waiting message and send next
-					sendingMsgQueue.pop();
-					wait_rsp = false;
-					sendNextMsg();
-				}
+                sMsg l_msgQ = sendingMsgQueue.front();
+                if( l_msgQ.i_cmd == l_cmd ) // Bug
+                {
+                    // remove waiting message and send next
+                    sendingMsgQueue.pop();
+                    wait_rsp = false;
+                    sendNextMsg();
+                }
             }
         }
     }    
