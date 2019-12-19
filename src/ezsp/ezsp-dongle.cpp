@@ -1,6 +1,8 @@
 /**
  * @file ezsp-dongle.cpp
- */
+ *
+ * @brief Handles EZSP communication with a dongle over a serial port
+**/
 
 #include "ezsp-dongle.h"
 #include "spi/ILogger.h"

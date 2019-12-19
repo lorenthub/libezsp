@@ -1,3 +1,9 @@
+/**
+ * @file ezsp-dongle.h
+ *
+ * @brief Handles EZSP communication with a dongle over a serial port
+**/
+
 #pragma once
 
 #include <string>
@@ -27,9 +33,22 @@ extern "C" {	/* Avoid compiler warning on member initialization for structs (in 
 class CEzspDongle : public IAsyncDataInputObserver, public CAshCallback
 {
 public:
+    /**
+     * @brief Constructor
+     *
+     * @param[in] i_timer_factory A timer builder
+     * @param[in] p_observer An optional observer that will be notified when dongle state changes and when a EZSP message is received
+     *
+     * @note Observers can also be registered later on using method registerObserver()
+     */
     CEzspDongle( TimerBuilder &i_timer_factory, CEzspDongleObserver* ip_observer = nullptr );
+
     CEzspDongle() = delete; // Construction without arguments is not allowed
     CEzspDongle(const CEzspDongle&) = delete; /* No copy construction allowed (pointer data members) */
+
+    /**
+     * @brief Destructor
+     */
     ~CEzspDongle();
 
     CEzspDongle& operator=(CEzspDongle) = delete; /* No assignment allowed (pointer data members) */
@@ -62,7 +81,7 @@ public:
     /**
      * @brief Callback invoked on ASH info
      *
-     * @param EAshInfo An information pushed by the ASH layer
+     * @param info An information pushed by the ASH layer
      */
     void ashCbInfo( EAshInfo info );
 
